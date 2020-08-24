@@ -1,6 +1,6 @@
 // Incluindo Perseverance: primeiro, 
 // seguindo a órbita da Terra
-//acres centei phobos e deimos rotação, tamanhoe posição errados corrigir
+//acrescentei phobos e deimos rotação, tamanho e posição errados corrigir
 
 //Incluindo phobos e Deimos
 
@@ -9,7 +9,8 @@
 // Melhorei a assinatura em 200812
 //Translação e rotação 
 //de cada planeta/lua sincronizado com a rotação to sol de //27 dias.
-//let cam;
+
+//let camera;
 
 let earthjpg;
 let earthlat = 6.3;//2020-august 13
@@ -35,6 +36,9 @@ let assinatura;
 let posx = -200,
   posz = 100;
 let perseAngle = 0;
+var loadImg;
+var createImg;
+let xcam, ycam, zcam, dirxcam,dirycam,dirzcam;
 
 function preload() {
   earthjpg = loadImage('earthcloud-1.jpg');
@@ -46,12 +50,13 @@ function preload() {
   mercuryjpg = loadImage('mercury.jpg');
   venusjpg = loadImage('venus.jpg');
   starsjpg = loadImage('stars.jpg');
+  perseverance = loadImage("perseverance.png");
 }
 
 function setup() {
   //some conversions;
   
-  createCanvas(1340, 980, WEBGL);
+  createCanvas(640, 480, WEBGL);
   assinatura = createGraphics(380, 100);
   assinatura.background(0, 220);
   assinatura.fill(255);
@@ -66,8 +71,14 @@ function draw() {
   angleMode(DEGREES);
   perseAngle += 10;
   background(0);
-  translate(0, 0, -20 * mouseX);
-  rotateY(-2 * mouseY);
+  xcam = 1500*cos(frameCount/13);
+  zcam = 1500*sin(frameCount/50);
+  ycam = 1500*sin(frameCount/33);
+  //zcam =-500;
+  //xcam = 500;
+  camera(xcam,ycam,zcam, 0,0,0, 0,1,0);
+  
+
   push();
   // translate(0, 0, -3000);
   // texture(starsjpg);
@@ -111,9 +122,10 @@ function draw() {
   push();
   rotateY(earthlong); 
   rotateY(1.36*frameCount / 365.26); 
-  translate(0,0,-1000);
-  fill(255,255,255);
-  cylinder(30, 30);
+  translate(-100,0,-1000);
+  texture(perseverance);
+  rotateZ(180);
+  plane(50, 30);
   pop();
 
   push();
