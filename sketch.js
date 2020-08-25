@@ -56,7 +56,7 @@ function preload() {
 function setup() {
   //some conversions;
   
-  createCanvas(640, 480, WEBGL);
+  createCanvas(1280,720, WEBGL);
   assinatura = createGraphics(380, 100);
   assinatura.background(0, 220);
   assinatura.fill(255);
