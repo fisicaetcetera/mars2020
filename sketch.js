@@ -39,6 +39,7 @@ let perseAngle = 0;
 var loadImg;
 var createImg;
 let xcam, ycam, zcam, dirxcam,dirycam,dirzcam;
+let loop = true;
 
 function preload() {
   earthjpg = loadImage('earthcloud-1.jpg');
@@ -69,7 +70,15 @@ function setup() {
 
 function draw() {
   angleMode(DEGREES);
-  perseAngle += 10;
+  //perseAngle += 10;
+  if(mousePressed()){
+     loop = !loop; 
+  }
+  if(loop){
+    noLoop;
+  } else {
+     Loop; 
+    }
   background(0);
   xcam = 1500*cos(frameCount/13);
   zcam = 1500*sin(frameCount/50);
@@ -87,7 +96,7 @@ function draw() {
 
   push();
   texture(assinatura);
-  translate(posx++, 50, posz--);
+  translate(posx++, posx+posy, posz--);
   rotateY(frameCount / 95);
   rotateX(frameCount / 130);
   box(50);
