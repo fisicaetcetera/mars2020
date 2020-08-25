@@ -71,14 +71,6 @@ function setup() {
 function draw() {
   angleMode(DEGREES);
   //perseAngle += 10;
-  if(mousePressed()){
-     loop = !loop; 
-  }
-  if(loop){
-    noLoop;
-  } else {
-     Loop; 
-    }
   background(0);
   xcam = 1500*cos(frameCount/13);
   zcam = 1500*sin(frameCount/50);
