@@ -65,7 +65,7 @@ function setup() {
   
   //angleMode(DEGREES);
   factorHora = 24*3600000/TWO_PI;//dia em milisegundos
-  createCanvas(640, 200, WEBGL);
+  createCanvas(1366, 600, WEBGL);
   assinatura = createGraphics(380, 100);
   assinatura.background(0, 220);
   assinatura.fill(255);
